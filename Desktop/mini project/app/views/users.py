@@ -1,3 +1,4 @@
+from flask import jsonify
 from models import User 
 from config import db
 
@@ -6,7 +7,8 @@ def create_user(username, email, age, gender):
     new_user = User(username=username, email=email, age=age, gender=gender)
     db.session.add(new_user)
     db.session.commit()
-    return new_user
+    
+    return new_user.to_dict()
 
 
 #전체 유저 데이터 조회 함수

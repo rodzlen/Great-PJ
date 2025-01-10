@@ -21,7 +21,7 @@ def get_users():
 
  #특정유저조회함수   
 def get_user(user_id):
-    user = User.query.get(user_id)
+    user = User.query.filter_by(user_id).all()
     if user:
-        return User.to_dict()
-    return {"error" : "Not found"}
+        return user.to_dict()
+    return {"msg" : "Not found"}

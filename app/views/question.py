@@ -1,4 +1,4 @@
-from models import Question
+from app.models import Question
 from config import db
 # 모든 질문 가져오는 함수 (관리자)  
 def get_all_questions():
@@ -36,10 +36,9 @@ def get_question(question_title):
     else:
         return [question.to_dict() for question in questions]
 # 잘문 게시 함수
-def post_question(question_title, is_active,sqe,image_id):
+def post_question(question_title, sqe,image_id):
     new_question = Question(
             title=question_title,
-            is_active=is_active,
             sqe=sqe,
             image_id=image_id,
         )

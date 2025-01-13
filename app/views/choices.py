@@ -1,5 +1,5 @@
 from config import db
-from models import Choices, Question
+from app.models import Choices, Question
 
 # 모든 선택을 가져오기(관리자)
 def get_all_choice():

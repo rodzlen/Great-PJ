@@ -1,4 +1,4 @@
-from models import Answer
+from app.models import Answer
 from config import db
 
 # 모든 답변을 가져오는 기능(관리자)

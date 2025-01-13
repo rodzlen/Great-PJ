@@ -1,10 +1,10 @@
 from flask import jsonify
-from models import User 
+from app.models import User 
 from config import db
 
 #생성함수
 def create_user(username, email, age, gender):
-    new_user = User(username=username, email=email, age=age, gender=gender)
+    new_user = User(name=username, email=email, age=age, gender=gender)
     db.session.add(new_user)
     db.session.commit()
     
@@ -19,9 +19,9 @@ def get_users():
 
 
 
- #특정유저조회함수   
+#특정유저조회함수   
 def get_user(user_id):
-    user = User.query.filter_by(user_id).all()
+    user = User.query.filter_by(id=user_id).first()
     if user:
         return user.to_dict()
     return {"msg" : "Not found"}

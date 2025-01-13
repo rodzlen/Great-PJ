@@ -8,7 +8,19 @@ def get_all_answer():
         return {"msg": "No Found Data"}
     return [answer.to_dict() for answer in answers]
 
-# 특정 사용자 및 선택지의 답변을 가져오는 기능
+# 해당 답변 삭제 쿼리 (관리자)
+def delete_answer(answer_id):
+    answer = Answer.query.filter_by(id = answer_id).all()
+    
+    if not answer:
+        return {'msg': 'No Found Data'}
+    db.session.delete(answer)
+    db.session.commit()
+    
+    return {"msg": "Successfully Deleted Data"}
+    
+
+# 특정 사용자 및 선택지의 답변 정보를 가져오는 기능
 def get_answer(user_id, choice_id):
     answers = Answer.query.filter_by(user_id=user_id, choice_id=choice_id).all()
     if not answers:

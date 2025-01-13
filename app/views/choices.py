@@ -8,6 +8,25 @@ def get_all_choice():
         return {"msg":"No Found choices Data"}
     return [choice.to_dict() for choice in choices]
 
+# 해당 선택지 업데이트 쿼리
+def update_choice(choice_id, content,is_active):
+    choice = Choices.query.filter_by(id = choice_id).all()
+    if content is not None:
+        choice.content=content
+    if is_active is not None:
+        choice.is_actice= is_active
+    db.session.commit()
+    return {"msg":"Successfully Update Data","choice":choice.to_dict()}
+    
+
+# 해당 선택지 삭제 쿼리
+def delete_choice(choice_id):
+    choice = Choices.query.filter_by(id=choice_id).all()
+    if choice is None:
+        return {"mag": "No Found Data"}
+    db.session.delete(choice)
+    db.session.commit()
+    return {"msg": "Successfully Deleted Data"}
 # 해당 질문의 선택지들 가져오기
 def get_choice(question_id):
     choices = Choices.query.filter(question_id = question_id).all()

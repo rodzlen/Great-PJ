@@ -128,3 +128,18 @@ class Answer(BaseModel):
             "created_at": self.created_at.isoformat(),
             "updated_at": self.updated_at.isoformat(),
         }
+    
+# Admin Model
+class Admin(BaseModel):
+    __tablename__ ="admins"
+    adminname = db.Column(db.String(20), unique=True,nullable=False)
+    adminpw = db.Column(db.String(30),nullable=False)
+    
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "adminname": self.adminname,
+            "adminpw": self.adminpw,
+            "created_at": self.created_at.isoformat(),
+            "updated_at": self.updated_at.isoformat(),
+        }

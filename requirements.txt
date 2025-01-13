@@ -13,3 +13,6 @@ gunicorn
 # 코드 수정 라이브러리
 black
 isort
+
+#api 관련 라이브러리
+flask_smorest

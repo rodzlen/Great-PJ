@@ -16,7 +16,7 @@ def delete_question(question_id):
         db.session.commit()
         return {"msg": "Successfully Deleted Data"}
     return {'msg': 'No Data Founded'}
-# 질문 수정 함수(관리자)
+# 해당 질문 수정 함수(관리자)
 def update_question(question_id,title,is_active):
     question = Question.query.filter_by(id = question_id).all()
     if not question:

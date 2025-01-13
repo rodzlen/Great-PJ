@@ -5,7 +5,7 @@ db = SQLAlchemy()
 
 
 class Config:
-    SQLALCHEMY_DATABASE_URI = "mysql+pymysqlm/username:password@localhost/dbname"
+    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:1234@localhost/oz_form"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_POOL_SIZE = 10
     SQLALCHEMY_POOL_TIMEOUT = 5
@@ -13,3 +13,4 @@ class Config:
     SQLALCHEMY_MAX_OVERFLOW = 5
     SQLALCHEMY_ECHO = False
     reload = True
+

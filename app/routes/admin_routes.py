@@ -111,7 +111,7 @@ class UserApi(MethodView):
         if user_id:
             return users.get_user(user_id)
         else:    
-            return users.get_users()
+            return users.get_all_users()
     
     def post(self):
         new_data = request.json        

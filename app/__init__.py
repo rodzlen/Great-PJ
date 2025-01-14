@@ -46,7 +46,7 @@ def create_app():
     # application.register_blueprint(answer_blp)
 
     #openapi 블루프린트
-    # admin
+    #admin
     api.register_blueprint(choice_blp_admin)
     api.register_blueprint(question_blp_admin)
     api.register_blueprint(user_blp_admin)

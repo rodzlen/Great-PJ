@@ -8,15 +8,15 @@ from app.views import question, images,users,choices,answers
 answer_blp = Blueprint('answers',__name__,url_prefix='/answers')
 
 class AnswerApi(MethodView):
-    def get(self,answer_id=None):
-        return answers.get_answer(answer_id==answer_id)
+    # def get(self,answer_id=None):
+    #     return answers.get_answer(answer_id==answer_id)
 
     def post(self):
         new_answer = request.json
         return answers.post_answer(user_id=new_answer['user_id'],choice_id=new_answer['choice_id'])
     
-    def delete(self, answer_id=None):
-        return answers.delete_answer(answer_id=answer_id)
+    # def delete(self, answer_id=None):
+    #     return answers.delete_answer(answer_id=answer_id)
             
         
         
@@ -26,13 +26,13 @@ choice_blp = Blueprint('choices',__name__,url_prefix='/choices')
 
 class ChoiceApi(MethodView):
     def get(self,choice_id=None):
-        return choices.get_choice(choice_id)
+        return choices.get_all_choice()
     
     def post(self):
         new_choice = request.json
         return choices.post_choice(question_id=new_choice['question_id'],content=new_choice['content'],sqe=new_choice['sqe'])
-    def delete(self,choice_id=None):
-        return choices.delete_choice(choice_id=choice_id)
+    # def delete(self,choice_id=None):
+    #     return choices.delete_choice(choice_id=choice_id)
     
     # def put(self,choice_id=None):
     #     new_choice = request.json
@@ -56,15 +56,15 @@ class QuestionApi(MethodView):
             return question.get_question(question_id=question_id)
         return question.get_all_questions()
     
-    def post(self):
-        data = request.json
-        if data:
-            title = data['title']
-            sqe = data['sqe']
-            image_id = data['image_id']
-            return question.post_question(question_title=title,image_id=image_id,sqe=sqe)
-        else:
-            return {'msg':"No Data Found"}
+    # def post(self):
+    #     data = request.json
+    #     if data:
+    #         title = data['title']
+    #         sqe = data['sqe']
+    #         image_id = data['image_id']
+    #         return question.post_question(question_title=title,image_id=image_id,sqe=sqe)
+    #     else:
+    #         return {'msg':"No Data Found"}
         
     # def put(self,question_id=None):
     #     new_question = request.json

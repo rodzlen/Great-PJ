@@ -1,5 +1,6 @@
 from app.models import Question,Choices
 from config import db
+from flask import jsonify
 # 모든 질문 가져오는 함수 (관리자)  
 def get_all_questions():
     questions = Question.query.all()
@@ -36,7 +37,7 @@ def get_question(question_id):
     if not question:
         return{"msg":"No Data Found"}
     else:
-        return {
+        return jsonify({
         "id": question.id,
         "title": question.title,
         "image": question.image.url if question.image else None,
@@ -45,12 +46,12 @@ def get_question(question_id):
                 "id": choice.id,
                 "content": choice.content,
                 "is_active": choice.is_active,
-                "sqe":choice.sqe
+                "sqe": choice.sqe
             }
             for choice in Choices.query.filter_by(question_id=question.id).all()
         ],
-        "sqe":question.sqe
-    }
+        "sqe": question.sqe
+    })
     
     
 # 잘문 게시 함수

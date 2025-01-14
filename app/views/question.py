@@ -41,7 +41,7 @@ def get_question(question_id):
         return jsonify({"question":{
         "id": question.id,
         "title": question.title,
-        "image": question.image.url if question.image else None,
+        "image": {"url":question.image.url if question.image else None},
         "choices": [
             {
                 "id": choice.id,

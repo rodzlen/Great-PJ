@@ -82,7 +82,7 @@ class UserApi(MethodView):
     # 회원 가입시 유저 정보 저장
     def post(self):
         new_data = request.json
-        return users.create_user(username=new_data['username'],email=new_data['email'],age=new_data['age'],gender=new_data['gender'])
+        return users.create_user(username=new_data['name'],email=new_data['email'],age=new_data['age'],gender=new_data['gender'])
 
 # MethodView를 Blueprint에 등록 
 # image_blp.add_url_rule('/<int:image_id>',view_func=ImageApi.as_view('image'))

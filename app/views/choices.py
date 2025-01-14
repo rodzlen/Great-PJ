@@ -34,7 +34,7 @@ def get_choice(question_id):
     choices = Choices.query.filter_by(question_id = question_id).all()
     if not choices:
         return {"msg":"No Data Found"}
-    return {"choices":[{"id":choice.id,"content":choice.content,"is_active":choice.is_active}for choice in choices]}
+    return {"choices":[{"id":choice.id,"content":choice.content,"is_active":choice.is_active,"sqe":choice.sqe}for choice in choices]}
 
 # 선택지 등록하기
 def post_choice(question_id, content,sqe):

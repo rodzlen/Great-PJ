@@ -45,9 +45,11 @@ def get_question(question_id):
                 "id": choice.id,
                 "content": choice.content,
                 "is_active": choice.is_active,
+                "sqe":choice.sqe
             }
             for choice in Choices.query.filter_by(question_id=question.id).all()
         ],
+        "sqe":question.sqe
     }
     
     

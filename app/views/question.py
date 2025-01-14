@@ -49,4 +49,7 @@ def post_question(question_title, sqe,image_id):
         db.session.add(new_question)
         db.session.commit()
         return new_question.to_dict()
-
+# 질문 개수 확인
+def count_questions():
+    questions=Question.query.count()
+    return {"total":questions}

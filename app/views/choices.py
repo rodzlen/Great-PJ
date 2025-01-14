@@ -30,11 +30,11 @@ def delete_choice(choice_id):
     db.session.commit()
     return {"msg": "Successfully Deleted Data"}
 # 해당 선택지 가져오기
-def get_choice(choice_id):
-    choice = Choices.query.filter_by(id = choice_id).first()
-    if not choice:
+def get_choice(question_id):
+    choices = Choices.query.filter_by(question_id = question_id).all()
+    if not choices:
         return {"msg":"No Data Found"}
-    return choice.to_dict()
+    return [choice.to_dict() for choice in choices]
 
 # 선택지 등록하기
 def post_choice(question_id, content,sqe):

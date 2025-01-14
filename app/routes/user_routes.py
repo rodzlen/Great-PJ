@@ -47,7 +47,7 @@ class ImageApi(MethodView):
 
 
 #질문 API
-question_blp = Blueprint('questions',__name__,url_prefix='/questions')
+question_blp = Blueprint('questions',__name__,url_prefix='/question')
 
 class QuestionApi(MethodView):
     

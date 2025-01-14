@@ -8,7 +8,6 @@ from app.routes.user_routes import question_blp,user_blp,choice_blp,answer_blp,i
 migrate = Migrate()
 
 
-
 def create_app():
     application = Flask(__name__)
 
@@ -24,6 +23,8 @@ def create_app():
     application.config["OPENAPI_SWAGGER_UI_URL"] = "https://cdn.jsdelivr.net/npm/swagger-ui-dist/"
 
     api = Api(application)
+
+    
 
     db.init_app(application)
     with application.app_context():
@@ -59,6 +60,11 @@ def create_app():
     api.register_blueprint(user_blp)
     api.register_blueprint(image_blp)
     api.register_blueprint(answer_blp)
+
+    @application.route('/',endpoint='/')
+    def index():
+        return {"msg":"Success Connect"}
+    
 
 
     return application

@@ -7,8 +7,8 @@ def get_all_images():
         return {"msg": "No Data Found"}
     return [image.to_dict() for image in images]
 # 햐당 이미지 조회
-def get_image(image_id):
-    image = Image.query.filter_by(id=image_id).first()
+def get_image():
+    image = Image.query.filter_by(type='main').first()
     if image:
         return image.to_dict()
     return {"msg":"Not Found Image Data"}

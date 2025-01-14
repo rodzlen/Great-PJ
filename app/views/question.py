@@ -43,12 +43,12 @@ def get_question(question_id):
         "title": question.title,
         "image": question.image.url if question.image else None,
         "choices": [
-            {
+            {"question":{
                 "id": choice.id,
                 "content": choice.content,
                 "is_active": choice.is_active,
                 "sqe": choice.sqe
-            }
+            }}
             for choice in Choices.query.filter_by(question_id=question.id).all()
         ]
     })

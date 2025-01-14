@@ -10,7 +10,7 @@ def get_all_images():
 def get_image():
     image = Image.query.filter_by(type='main').first()
     if image:
-        return image.to_dict()
+        return {"image":image.url}
     return {"msg":"Not Found Image Data"}
 # 이미지 등록
 def post_image( url, type):

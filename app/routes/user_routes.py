@@ -47,7 +47,7 @@ class ImageApi(MethodView):
 
 
 #질문 API
-question_blp = Blueprint('questions',__name__,url_prefix='/question')
+question_blp = Blueprint('questions',__name__)
 
 class QuestionApi(MethodView):
     
@@ -89,8 +89,8 @@ class UserApi(MethodView):
 image_blp.add_url_rule('/main',view_func=ImageApi.as_view('image'))
 
 # question_blp.add_url_rule('/', view_func=QuestionApi.as_view('questions'))
-question_blp.add_url_rule('/<int:question_id>', view_func=QuestionApi.as_view('question'))
-question_blp.add_url_rule('/count', view_func=QuestionApi.as_view('question'))
+question_blp.add_url_rule('question/<int:question_id>', view_func=QuestionApi.as_view('question'))
+question_blp.add_url_rule('questions/count', view_func=QuestionApi.as_view('question'))
 
 user_blp.add_url_rule('/signup',view_func=UserApi.as_view('users'),methods=["POST"])
 

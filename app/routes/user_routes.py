@@ -52,8 +52,8 @@ question_blp = Blueprint('questions',__name__)
 class QuestionApi(MethodView):
     
     def get(self,question_id=None):
-        return question.get_question(question_id=question_id)
-    def get(self):
+        if question_id:
+            return question.get_question(question_id=question_id)
         return question.count_questions()
         
     

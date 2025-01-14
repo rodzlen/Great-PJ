@@ -37,21 +37,7 @@ def get_question(question_id):
     if not question:
         return{"msg":"No Data Found"}
     else:
-        print({
-        "id": question.id,
-        "title": question.title,
-        "image": question.image.url if question.image else None,
-        "choices": [
-            {
-                "id": choice.id,
-                "content": choice.content,
-                "is_active": choice.is_active,
-                "sqe": choice.sqe
-            }
-            for choice in Choices.query.filter_by(question_id=question.id).all()
-        ],
-        "sqe": question.sqe
-    })
+        
         return jsonify({
         "id": question.id,
         "title": question.title,
@@ -64,8 +50,7 @@ def get_question(question_id):
                 "sqe": choice.sqe
             }
             for choice in Choices.query.filter_by(question_id=question.id).all()
-        ],
-        "sqe": question.sqe
+        ]
     })
     
     

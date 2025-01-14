@@ -12,8 +12,9 @@ class AnswerApi(MethodView):
     #     return answers.get_answer(answer_id==answer_id)
 
     def post(self):
-        new_answer = request.json
-        return answers.post_answer(user_id=new_answer['user_id'],choice_id=new_answer['choice_id'])
+        new_answers = request.json
+        
+        return {"message":f"User: {new_answers[0]['userId']}'s answers Success Create"}
     
     # def delete(self, answer_id=None):
     #     return answers.delete_answer(answer_id=answer_id)

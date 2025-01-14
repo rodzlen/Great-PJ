@@ -1,4 +1,4 @@
-from app.models import Question
+from app.models import Question,Choices
 from config import db
 # 모든 질문 가져오는 함수 (관리자)  
 def get_all_questions():
@@ -36,7 +36,20 @@ def get_question(question_id):
     if not question:
         return{"msg":"No Data Found"}
     else:
-        return question.to_dict()
+        return {
+        "id": question.id,
+        "title": question.title,
+        "image": question.image.url if question.image else None,
+        "choices": [
+            {
+                "id": choice.id,
+                "content": choice.content,
+                "is_active": choice.is_active,
+            }
+            for choice in Choices.query.filter_by(question_id=question.id).all()
+        ],
+    }
+    
     
 # 잘문 게시 함수
 def post_question(question_title, sqe,image_id):

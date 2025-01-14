@@ -90,10 +90,10 @@ class UserApi(MethodView):
 image_blp.add_url_rule('/main',view_func=ImageApi.as_view('image'))
 
 # question_blp.add_url_rule('/', view_func=QuestionApi.as_view('questions'))
-question_blp.add_url_rule('/question/<int:question_id>', view_func=QuestionApi.as_view('question'))
+question_blp.add_url_rule('/question/<int:question_id>', view_func=QuestionApi.as_view('question_id'))
 question_blp.add_url_rule('/questions/count', view_func=QuestionApi.as_view('question'))
 
-user_blp.add_url_rule('/signup',view_func=UserApi.as_view('users'),methods=["POST"])
+user_blp.add_url_rule('/signup',view_func=UserApi.as_view('users'))
 
 # choice_blp.add_url_rule('/',view_func=ChoiceApi.as_view('choices'))
 choice_blp.add_url_rule('/choice/<int:question_id>',view_func=ChoiceApi.as_view('choice'))

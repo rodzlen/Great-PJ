@@ -38,20 +38,20 @@ def get_question(question_id):
         return{"msg":"No Data Found"}
     else:
         
-        return jsonify({
+        return jsonify({"question":{
         "id": question.id,
         "title": question.title,
         "image": question.image.url if question.image else None,
         "choices": [
-            {"question":{
+            {
                 "id": choice.id,
                 "content": choice.content,
                 "is_active": choice.is_active,
                 "sqe": choice.sqe
-            }}
+            }
             for choice in Choices.query.filter_by(question_id=question.id).all()
         ]
-    })
+    }})
     
     
 # 잘문 게시 함수

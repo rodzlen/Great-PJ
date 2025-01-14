@@ -94,7 +94,7 @@ question_blp.add_url_rule('/count', view_func=QuestionApi.as_view('question'))
 
 user_blp.add_url_rule('/signup',view_func=UserApi.as_view('users'),methods=["POST"])
 
-choice_blp.add_url_rule('/',view_func=ChoiceApi.as_view('choices'))
+# choice_blp.add_url_rule('/',view_func=ChoiceApi.as_view('choices'))
 choice_blp.add_url_rule('/choice/<int:question_id>',view_func=ChoiceApi.as_view('choice'))
 
 answer_blp.add_url_rule('/submit',view_func=AnswerApi.as_view('answers'))

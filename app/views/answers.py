@@ -33,7 +33,7 @@ def post_answer(user_id, choice_id):
     if new_answer:
         db.session.add(new_answer)
         db.session.commit()
-        return {"message":f"User: {new_answer[0]['userId']}'s answers Success Create"}
+        return {"message":f"User: {new_answer.user_id}'s answers Success Create"}
     return {"msg":"Not Found Request Data"}
 
 # 답변 업데이트 필요성?

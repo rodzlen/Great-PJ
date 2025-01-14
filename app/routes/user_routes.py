@@ -10,12 +10,19 @@ answer_blp = Blueprint('answers',__name__)
 class AnswerApi(MethodView):
     # def get(self,answer_id=None):
     #     return answers.get_answer(answer_id==answer_id)
-
+    
     def post(self):
         new_answers = request.json
         
-        return {"message":f"User: {new_answers[0]['userId']}'s answers Success Create"}
-    
+        for answer in new_answers:
+            user_id = answer.get("userId")
+            choice_id = answer.get("choiceId")
+            
+            # userId와 choiceId가 있을 때만 처리
+            if user_id and choice_id:
+                return answers.post_answer(user_id=user_id, choice_id=choice_id)
+            else:
+                return {"msg": "Invalid data"}
     # def delete(self, answer_id=None):
     #     return answers.delete_answer(answer_id=answer_id)
             

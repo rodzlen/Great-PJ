@@ -1,5 +1,6 @@
 from app.models import Image,Question
 from config import db
+from flask import jsonify
 # 모든 이미지들을 가져오기(관리자)
 def get_all_images():
     images = Image.query.all()
@@ -10,7 +11,7 @@ def get_all_images():
 def get_image():
     image = Image.query.filter_by(type='main').first()
     if image:
-        return {"image":image.url}
+        return jsonify({"image": image.url}), 201  
     return {"msg":"Not Found Image Data"}
 # 이미지 등록
 def post_image( url, type):

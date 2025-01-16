@@ -7,7 +7,7 @@ def get_all_images():
     if not images:
         return {"msg": "No Data Found"}
     return [image.to_dict() for image in images]
-# 햐당 이미지 조회
+# 메인 이미지 조회
 def get_image():
     image = Image.query.filter_by(type='main').first()
     if image:

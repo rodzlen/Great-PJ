@@ -13,16 +13,11 @@ class AnswerApi(MethodView):
     
     def post(self):
         new_answers = request.json
-        
-        for answer in new_answers:
-            user_id = answer.get("userId")
-            choice_id = answer.get("choiceId")
-            
             # userId와 choiceId가 있을 때만 처리
-            if user_id and choice_id:
-                return answers.post_answer(user_id=user_id, choice_id=choice_id)
-            else:
-                return {"msg": "Invalid data"}
+        if new_answers:
+            return answers.post_answer(new_answers)
+        else:
+            return {"msg":"Not Found Request Data"}
     # def delete(self, answer_id=None):
     #     return answers.delete_answer(answer_id=answer_id)
             

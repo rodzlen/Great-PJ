@@ -1,5 +1,6 @@
 from app.models import Answer,User,Choices
 from config import db
+from flask import request
 
 # 모든 답변을 가져오는 기능(관리자)
 def get_all_answer():
@@ -28,12 +29,15 @@ def get_answer(answer_id):
     return answer.to_dict()
 
 # 답변 등록
-def post_answer(user_id, choice_id):
-    new_answer = Answer(user_id=user_id, choice_id=choice_id)
-    if new_answer:
+def post_answer(new_answers):
+    for new_answer in new_answers:
+        user_id = new_answer.get("userId")
+        choice_id = new_answer.get("choiceId")
+        new_answer = Answer(user_id=user_id, choice_id=choice_id)
         db.session.add(new_answer)
         db.session.commit()
-        return {"message":f"User: {new_answer.user_id}'s answers Success Create"}
-    return {"msg":"Not Found Request Data"}
+
+    return {"message":f"User: {new_answer.user_id}'s answers Success Create"}
+    
 
 # 답변 업데이트 필요성?

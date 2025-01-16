@@ -37,7 +37,7 @@ def create_user(username, email, age, gender):
         return {"message": "모든 필드를 입력해주세요."}
 
     # 이름 중복 확인
-    existing_user = User.query.filter_by(name=username).first()
+    existing_user = User.query.filter_by(email=email).first()
     if existing_user:
         return {"message": "이미 존재하는 계정입니다."}
 

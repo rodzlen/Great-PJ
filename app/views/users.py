@@ -1,4 +1,4 @@
-from flask import request,flash,redirect,url_for
+from flask import request
 from app.models import User 
 from config import db
 
@@ -34,13 +34,12 @@ def delete_user(user_id):
 #생성함수
 def create_user(username, email, age, gender):
     if not all([username, email, age, gender]):
-        return {"message": "모든 필드를 입력해주세요."}
+        raise ValueError("모든 필드를 입력해 주세요.")
 
     # 이름 중복 확인
     existing_user = User.query.filter_by(email=email).first()
     if existing_user:
-        flash("이미 존재하는 계정입니다.", "danger")
-        return redirect('https://oz-flask-form.vercel.app')
+        raise ValueError("이미 존재하는 계정입니다.")
 
     # 새로운 유저 생성
     new_user = User(name=username, email=email, age=age, gender=gender)

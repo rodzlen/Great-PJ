@@ -1,4 +1,4 @@
-from flask import request
+from flask import request,flash,redirect,url_for
 from app.models import User 
 from config import db
 
@@ -39,7 +39,8 @@ def create_user(username, email, age, gender):
     # 이름 중복 확인
     existing_user = User.query.filter_by(email=email).first()
     if existing_user:
-        return {"message": "이미 존재하는 계정입니다."}
+        flash("이미 존재하는 계정입니다.", "danger")
+        return redirect(url_for("index"))
 
     # 새로운 유저 생성
     new_user = User(name=username, email=email, age=age, gender=gender)

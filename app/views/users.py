@@ -34,12 +34,12 @@ def delete_user(user_id):
 #생성함수
 def create_user(username, email, age, gender):
     if not all([username, email, age, gender]):
-        raise ValueError("모든 필드를 입력해 주세요.")
+        return {"message": "모든 필드를 입력해주세요."}
 
     # 이름 중복 확인
     existing_user = User.query.filter_by(email=email).first()
     if existing_user:
-        raise ValueError("이미 존재하는 계정입니다.")
+        return {"message": "이미 존재하는 계정입니다."}
 
     # 새로운 유저 생성
     new_user = User(name=username, email=email, age=age, gender=gender)

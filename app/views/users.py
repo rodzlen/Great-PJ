@@ -40,7 +40,7 @@ def create_user(username, email, age, gender):
     existing_user = User.query.filter_by(email=email).first()
     if existing_user:
         flash("이미 존재하는 계정입니다.", "danger")
-        return redirect(url_for("index"))
+        return redirect('https://oz-flask-form.vercel.app')
 
     # 새로운 유저 생성
     new_user = User(name=username, email=email, age=age, gender=gender)
